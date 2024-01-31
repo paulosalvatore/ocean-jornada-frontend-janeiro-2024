@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Card from './components/Card/Card'
 
@@ -58,8 +58,12 @@ function App() {
     // Depois que fizermos isso, vamos subir o site na nuvem
   }
 
-  // Chamando a função que carrega dados da API
-  carregarDadosApi()
+  // Protegemos o carregamento de dados da API para chamar
+  // apenas uma única vez
+  useEffect(function () {
+    // Chamando a função que carrega dados da API
+    carregarDadosApi()
+  }, [])
 
   return (
     <>
